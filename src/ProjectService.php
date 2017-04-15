@@ -63,9 +63,9 @@ class ProjectService
             mkdir("$docroot/$projectName");
         }
         if (file_exists("$docroot/$projectName/$branch")) {
-            rename("$docroot/$projectName/$branch", "$repoTmpPath/$branch.trash");
+            exec("mv " . escapeshellarg("$docroot/$projectName/$branch") . " " . escapeshellarg("$repoTmpPath/$branch.trash"));
         }
-        rename("$repoTmpPath/$buildPath", "$docroot/$projectName/$branch");
+        exec("mv " . escapeshellarg("$repoTmpPath/$buildPath") . " " . escapeshellarg("$docroot/$projectName/$branch"));
     }
 
     /**
