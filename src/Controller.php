@@ -12,7 +12,7 @@ class Controller
     {
         $token = $request->query->get('token');
         $app['project_service']->authenticate($projectName, $token);
-        $app['project_service']->build($projectName, $branch);
-        return $app->json(['message' => 'ok']);
+        $result = $app['project_service']->build($projectName, $branch);
+        return $app->json(['message' => $result ? 'ok' : 'nok']);
     }
 }

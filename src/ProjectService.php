@@ -55,9 +55,12 @@ class ProjectService
         error_log("Building docs");
         $cwd = getcwd();
         chdir($repoTmpPath);
-        $result = `"$vendorBinDir/phpdox"`;
-        error_log($result);
+        exec("$vendorBinDir/phpdox", $output, $return_var);
         chdir($cwd);
+        error_log(implode("\n", $output));
+        if ($return_var) {
+            return false;
+        }
 
         $docroot = __DIR__ . '/../public/projects';
         if (!file_exists("$docroot/$projectName")) {
@@ -67,6 +70,7 @@ class ProjectService
             exec("mv " . escapeshellarg("$docroot/$projectName/$branch") . " " . escapeshellarg("$repoTmpPath/$branch.trash"));
         }
         exec("mv " . escapeshellarg("$repoTmpPath/$buildPath") . " " . escapeshellarg("$docroot/$projectName/$branch"));
+        return true;
     }
 
     /**
