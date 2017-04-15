@@ -55,7 +55,8 @@ class ProjectService
         error_log("Building docs");
         $cwd = getcwd();
         chdir($repoTmpPath);
-        exec("$vendorBinDir/phpdox");
+        $result = `"$vendorBinDir/phpdox"`;
+        error_log($result);
         chdir($cwd);
 
         $docroot = __DIR__ . '/../public/projects';
