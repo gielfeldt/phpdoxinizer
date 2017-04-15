@@ -1,0 +1,7 @@
+{
+    "myprojectname": {
+        "repository_url": "http://github.com/someuser/someproject",
+        "build_path": "build/api/html",
+        "token": "sometoken"
+    }
+}

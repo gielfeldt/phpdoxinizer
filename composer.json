@@ -1,0 +1,12 @@
+{
+    "autoload" : {
+        "psr-4" : {
+            "PhpDoxinizer\\" : "src"
+        }
+    },
+    "require": {
+        "silex/silex": "^2.0",
+        "theseer/phpdox": "dev-master",
+        "kzykhys/git": "^0.1.2"
+    }
+}
